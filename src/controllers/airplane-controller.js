@@ -10,13 +10,33 @@ async function createAirplane(req, res) {
             capacity: req.body.capacity
         })
         SucessResponse.data = airplane
-        return res.status(StatusCodes.CREATED).json(SucessResponse)
+        return res
+                .status(StatusCodes.CREATED)
+                .json(SucessResponse)
     } catch (error) {
         ErrorResponse.error = error
-        return res.status(error.statusCode).json(ErrorResponse)
+        return res
+                .status(error.statusCode)
+                .json(ErrorResponse)
+    }
+}
+
+async function getAirplanes(req, res) {
+    try {
+        const airplanes = await AirplaneService.getAirplanes()
+        SucessResponse.data = airplanes
+        return res
+                .status(StatusCodes.OK)
+                .json(SucessResponse)
+    } catch (error) {
+        ErrorResponse.error = error
+        return res
+                .status(error.statusCode)
+                .json(ErrorResponse)
     }
 }
 
 module.exports ={
-    createAirplane
+    createAirplane,
+    getAirplanes
 }
