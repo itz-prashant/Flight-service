@@ -11,5 +11,8 @@ router.post('/',
 router.get('/',
         FlightControllers.getAllFlights
 )        
+router.get('/:id',
+        FlightControllers.getFlight
+)        
 
 module.exports = router;
