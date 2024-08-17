@@ -19,7 +19,7 @@ async function createFlight(req, res) {
         SucessResponse.data = flight
         return res
                 .status(StatusCodes.CREATED)
-                .json(SucessResponse)
+                .json(SucessResponse) 
     } catch (error) {
         ErrorResponse.error = error
         return res
